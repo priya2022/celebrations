@@ -8,6 +8,7 @@ const initialMonth = [
 ]
 
 export const MonthContext = createContext()
+
 const Month = () => {
   
   const [month,setMonth]= useState('')
@@ -18,34 +19,29 @@ const Month = () => {
 
 
   useEffect(()=>{    
+
+
+    
+    let currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+    let currentMonth = currentDate.getMonth();
+    let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    let generatedDays = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+    const firstDay = new Date(currentYear, currentMonth+ 1, 1).getDay();
+    const startDayOffset = firstDay === 0 ? 6 : firstDay - 1;
+    const shiftedDays = [...Array(startDayOffset).fill(''), ...generatedDays];
+
+    setDays(shiftedDays);
+
+    // Determine the start day of the week (0 for Sunday, 1 for Monday, and so on)
+
+    // Generate an array of days based on the start day of the week
     let d = new Date();
     let current = mynewMonth[d.getMonth()]
     setmyMonth(current)
-    
+
   },[])
 
-
-  const generateDays = (data) => {
-    if (data && data.length > 0) {
-      const currentMonth = data.find((item) => item.month === month);
-      if (currentMonth && currentMonth.startOfWeek) {
-        const startDay = currentMonth.startOfWeek; // Assuming startOfWeek is provided in the API response
-        const daysInMonth = new Date(
-          new Date().getFullYear(),
-          mynewMonth.indexOf(month) + 1,
-          0
-        ).getDate();
-        const newDays = [];
-        for (let i = 0; i < startDay; i++) {
-          newDays.push('');
-        }
-        for (let i = 1; i <= daysInMonth; i++) {
-          newDays.push(i);
-        }
-        setDays(newDays);
-      }
-    }
-  };
 
 
   const callgetApi=async()=>{
@@ -60,24 +56,35 @@ const Month = () => {
   
   const handleChange=(month)=>{
     setMonth(month.month)
-    generateDays(data);
+    console.log("month", month.month)
+
+    const year = 2023;
+    const monthIndex = initialMonth.indexOf(month.month);
+    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+
+    // Determine the start day of the week (0 for Sunday, 1 for Monday, and so on)
+    const firstDay = new Date(year, monthIndex, 1).getDay();
+
+    // Generate an array of days based on the start day of the week
+    const generatedDays = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+    const startDayOffset = firstDay === 0 ? 7 : firstDay - 0;
+    const shiftedDays = [...Array(startDayOffset).fill(''), ...generatedDays];
+
+    setDays(shiftedDays);
+
   }
   
+  const myMonthData = {monthData:data,monthDays:days }
   
   const dataReceiver = (data)=>{
     console.log("data",data);    
     setHighlight(data)
      
    }
-
-  const myMonthData = {monthData:data,monthDays:days }
-
-
-  
   return (
    
-    <MonthContext.Provider value={myMonthData}>
-      {console.log("Monthin My Month", month)}
+    <MonthContext.Provider value ={myMonthData} >
+     
     <div className="new">      
     <div className= "myMon"  gap={2} style={{"marginTop":"3%"}}>
     {
@@ -91,7 +98,20 @@ const Month = () => {
     </div>
 
     </div>
-    <Listing month={month} mynewMonth={mynewMonth} monthDataReceiver={dataReceiver}/> 
+
+      {/* <div className="calendar">
+        {days.map((day, index) => (
+          <div
+            key={index}
+            className={`calendar-day ${day === '' ? 'empty-day' : ''}`}
+          >
+            {day}
+          </div>
+        ))}
+      </div> */}
+    
+      <Listing month={month} mynewMonth={mynewMonth} monthDataReceiver={dataReceiver}/> 
+    
     </MonthContext.Provider>
   )
 }

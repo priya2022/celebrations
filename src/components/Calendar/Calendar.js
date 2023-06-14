@@ -22,7 +22,9 @@ const Calendar=({items,dataReceiver})=> {
 
   
   const {monthData} = useContext(MonthContext)
+
   const {monthDays} = useContext(MonthContext)
+
   const [next,setNext]= useState([])
   const [prev, setPrev]=useState([])
   const [past,setPast]=useState()
@@ -201,36 +203,16 @@ useEffect(() => {
 
   }
 
-  const startDate = new Date(year, month, 1);
-  const endDate = new Date(year, month + 1, 0);
-  const daysInMonth = endDate.getDate();
-  const monthName = startDate.toLocaleDateString(undefined, { month: 'long' });
-
-  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-  const firstDayOfWeek = startDate.getDay();
-  const mydays = [];
-  for (let i = 1; i <= daysInMonth; i++) {
-    const date = new Date(year, month, i);
-    const dayOfWeek = date.getDay();
-    mydays.push(
-      <div className="calendar-day" key={i}>
-        <span className="day-number">{i}</span>
-        <span className="day-name">{weekdays[dayOfWeek]}</span>
-      </div>
-    );
-  }
-
-  for (let i = 0; i < firstDayOfWeek; i++) {
-    mydays.unshift(<div className="calendar-day empty" key={`empty-${i}`} />);
-  }
+  
 
   return (
     
     <>
+    {console.log("days",days )}
 
 <div className="myCalCont">
 <div  className="table"> 
+
     <div className='monthdisplay'>                 
     <h4 className="calHead">{current}  2023</h4>
       <span>
@@ -247,17 +229,18 @@ useEffect(() => {
       <li>Fri</li>
       <li>Sat</li>
     </ul>
-  <div className="myCalendarcontainer">
-  {monthDays.map((item,index)=>{
-    return(         
-      <div key={index} >          
-        <div  className={days.includes(item.day)? 'highlight':''}>
-        {item.day}
+
+    <div className="calendar">
+        {monthDays.map((day, index) => (
+          <div
+            key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${monthDays.includes(days) ? 'highlight' : ''}`}
+
+          >
+            {day}
+          </div>
+        ))}
       </div>
-      </div>
-    )
-  })}
-  </div>       
+
   </div>
   <PastCeleb myPast={past}/>
   </div> 
