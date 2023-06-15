@@ -107,7 +107,7 @@ const Listing = ({month,mynewMonth,monthDataReceiver}) => {
           })
         }
         </div>       
-        <Calendar items={calData} dataReceiver = {dataReceiver}/>
+        {/* <Calendar items={calData} dataReceiver = {dataReceiver}/> */}
         </ListingContext.Provider>
         </>
       

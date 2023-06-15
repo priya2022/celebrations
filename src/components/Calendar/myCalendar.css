@@ -3,11 +3,23 @@
    grid-template-columns: repeat(7,minmax(75px,75px));
    grid-template-rows:repeat(5, minmax(30px,50px));   
    font-weight: 600;
+
+   
+  }
+  .weekDays{    
+    margin:0px 16px;
+    font-weight: 800;
+  }
+  .weeks{
+    
+   display:grid;
+   grid-template-columns: repeat(7,minmax(106px,106px));
+   text-align:center;
   }
   .table ul{
     list-style: none;
     display:grid;
-    grid-template-columns: repeat(7,minmax(75px,75px)); 
+    grid-template-columns: repeat(7,minmax(90px,97px)); 
     padding-left:0
     
   }
@@ -16,8 +28,12 @@
       
   }
   .myCalCont{
-    margin-top:22px;    
-    float:right;    
+    margin-top:52px;    
+    float:right;
+    width:32%;
+    /* margin-left:-20px; */
+    padding:2px;
+    
   }
   .highlight{
     background-color:#4E176C!important;
@@ -49,8 +65,30 @@
     font-size:11px !important;
   }
   .calHead{
-    margin-bottom:30px;    
+    margin-bottom:30px;
+    margin-left:20px;
   } 
+  
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.calendar-day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  height: 30px;
+}
+
+.calendar-day.highlight {
+  background-color: yellow;
+}
 
   /* .calendar {
     display: inline-block;

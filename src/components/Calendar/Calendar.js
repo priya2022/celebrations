@@ -220,14 +220,14 @@ useEffect(() => {
       <i className="bi bi-chevron-right right"  onClick={handleRight}></i>        
     </span>
     </div>
-    <ul>
-      <li>Sun</li>
-      <li>Mon</li>
-      <li>Tue</li>
-      <li>Wed</li>
-      <li>Thu</li>
-      <li>Fri</li>
-      <li>Sat</li>
+    <ul className="weeks">
+      <li className="weekDays">Sun</li>
+      <li className="weekDays">Mon</li>
+      <li className="weekDays">Tue</li>
+      <li className="weekDays">Wed</li>
+      <li className="weekDays">Thu</li>
+      <li className="weekDays">Fri</li>
+      <li className="weekDays">Sat</li>
     </ul>
 
     <div className="calendar">
