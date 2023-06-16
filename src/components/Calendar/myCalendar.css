@@ -47,6 +47,11 @@
     margin-top:20%;
     font-size:19px;
   }
+
+  .theme{
+    background-color:#370a4e!important;
+   
+  }
   
   .monthdisplay{
     display:flex;
@@ -80,10 +85,12 @@
 
 .calendar-day {
   display: flex;
+  background-color:rgb(255, 255, 255);
   justify-content: center;
   align-items: center;
-  font-weight: 700;
+  font-weight: 600;
   height: 30px;
+  
 }
 
 .calendar-day.highlight {

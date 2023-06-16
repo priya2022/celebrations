@@ -11,29 +11,19 @@ import {ListingContext} from '../Listing/Listing'
 
 const Calendar=({items,dataReceiver})=> {
 
-  const [year, setYear] = useState(2023);
-  const [month, setMonth] = useState(0);
-
   const {myData} = useContext(ListingContext)
   const [data,setData]= React.useState([])
 
-  const uniqueMonth =[...new Set(items.map(item=>item.month))]
-  const currentMonth = uniqueMonth[0]
+  const {monthData,monthDays} = useContext(MonthContext)
 
-  
-  const {monthData} = useContext(MonthContext)
-
-  const {monthDays} = useContext(MonthContext)
-
-  const [next,setNext]= useState([])
-  const [prev, setPrev]=useState([])
   const [past,setPast]=useState()
-const [current, setCurrent]= useState()
+  const [current, setCurrent]= useState()
 
  
+const uniqueMonth =[...new Set(items.map(item=>item.month))]
+const currentMonth = uniqueMonth[0]
+
 useEffect(() => { 
-
-
   setCurrent(currentMonth)
     //Previous Month
     for(let i=0;i<myData.length;i++)
@@ -51,7 +41,7 @@ useEffect(() => {
       //   prev =0
       //  }       
         var value = myData[prev].month.toString()
-        var previous = myData.filter(item => item.month === value)
+        const previous = myData.filter(item => item.month === value)
         setPast(previous)
         
       }
@@ -61,70 +51,156 @@ useEffect(() => {
 }, [currentMonth, myData])
     
   
-  var days =(items.map(item=> {return item.day}))
+  // var days =(items.map(item=> {return item.day}))
   
 
-  useEffect(() => {
-   callGetApi()
-  }, [])
+  // useEffect(() => {
+  //  callGetApi()
+  // }, [])
 
   
 
-  const callGetApi=async()=>{
-    const response = await axios.get("https://646476cc127ad0b8f89f469a.mockapi.io/days")
-    setData(response.data)
-  }
+  // const callGetApi=async()=>{
+  //   const response = await axios.get("https://646476cc127ad0b8f89f469a.mockapi.io/days")
+  //   setData(response.data)
+  // }
 
-  const prevMonth = () => {
-    setMonth(prevMonth => prevMonth - 1);
-  };
+ 
+ 
+  
+    // const handleRight =()=>{
+    //   data.map((item,index)=>
+    //   {
+    //     if(item.month === mynewMonth){
+    //       let next = index + 1;
+    //       if(next >= data.length)
+    //       {
+    //         next = 0
+    //       }
+         
+    //       const myNext = data[next].month
+    //       setmyMonth(myNext)
+    //     }
+        
+  
+    //   })
+    // }
 
-  const nextMonth = () => {
-    setMonth(prevMonth => prevMonth + 1);
-  };
 
-  const handleLeft=()=>{   
-    monthData.map((item,index)=>{ 
+     // const handleLeft =()=>{
+
+    //   data.map((item,index)=>
+    //   {
+    //     if(item.month === mynewMonth){
+    //       let previous = index - 1;
+    //       if(previous < 0){
+    //         previous = data.length -1
+    //       }
+         
+    //       const myPrevious = data[previous].month
+    //       setmyMonth(myPrevious)
+    //     }
+
+    //   })
+
+    // }
+
+    //ChatGpt
+    const handleLeft = () => {
+      for (let i = 0; i < monthData.length; i++) {
+        if (monthData[i].month === current) {
+          let previous = i - 1;
+          if (previous < 0) {
+            previous = monthData.length - 1;
+            console.log("PreviousIndex", previous)
+          }
     
-      if(item.month === current)  
-      {
-        let prevIndex= index-1
-        if(prevIndex < 0)
-        {
-          prevIndex = monthData.length-1
+          const myPrevious = monthData[previous].month;
+          console.log("myPrevious in Calendar",myPrevious)
+          console.log("myPrevious in Calendar Month",myPrevious )
+          setCurrent(myPrevious);
+          dataReceiver(myPrevious);
+          break; // Exit the loop once we find the current month
         }
-        const myPrev = monthData[prevIndex].month
-        setCurrent(myPrev)
-        dataReceiver(myPrev)              
       }
-   })
+    };
+    
+
+  // const handleLeft=()=>{   
+
+  //   for (let i = 0; i < monthData.length; i++) {
+  //     if (monthData[i].month === current) {
+  //       let previous = i - 1;
+  //       if (previous < 0) {
+  //         previous = monthData.length - 1;
+  //       }
+  
+  //       const myPrevious = monthData[previous].month;
+  //       setCurrent(myPrevious);
+  //       dataReceiver(myPrevious);
+  //       break; // Exit the loop once we find the current month
+  //     }
+  //   }
+  // }
+  const handleRight=()=>{       
+    
+    monthData.map((item, index) => {
+      if (item.month === current) {
+        let nextIndex = index + 1;
+        if (nextIndex >= monthData.length) {
+          nextIndex = 0;
+        }
+  
+        const myPrevious = monthData[nextIndex].month;
+        console.log("nextIndex",nextIndex)
+        setCurrent(myPrevious);
+        dataReceiver(myPrevious);
+      }
+    })
+  }
+  // const handleLeft=()=>{   
+  //   monthData.map((item,index)=>{ 
+    
+  //     if(item.month === current)  
+  //     {
+  //       let prevIndex= index-1
+  //       if(prevIndex < 0)
+  //       {
+  //         prevIndex = monthData.length-1         
+  //       }
+  //       const myPrev = monthData[prevIndex].month
+  //       setCurrent(myPrev)
+        
+  //       dataReceiver(myPrev)              
+  //     }
+  //  })
 
    //
-   myData.map((item,index)=>{
-    if(item.month ===  current)
-    {
-      var firstOne= myData.findIndex((item)=>item.month === current)
-      var previousIndex = firstOne-1
-      if(previousIndex < 0)
-      {
-        previousIndex = myData.lenght-1
+  //  myData.map((item,index)=>{
+  //   if(item.month ===  current)
+  //   {
+  //     var firstOne= myData.findIndex((item)=>item.month === current)
+  //     var previousIndex = firstOne-1
+  //     if(previousIndex < 0)
+  //     {
+  //       previousIndex = myData.lenght-1
         
-      }
+  //     }
 
-      var value = myData[previousIndex].month.toString()
-      console.log("avalue",value);
-      var previous = myData.filter(item => item.month === value)
-      if(previous < 0 )
-      {
-        var data =myData.length-1
-         previous = data.filter(item => item.month === value)
-      }
-      console.log("calnedarspreviousIndex",previous)
-      setPast(previous)
+  //     var value = myData[previousIndex].month.toString()
+  //     console.log("avalue",value);
+  //     var previous = myData.filter(item => item.month === value)
+  //     if(previous < 0 )
+  //     {
+  //       var data =myData.length-1
+  //        previous = data.filter(item => item.month === value)
+  //     }
+    
+  //     setPast(previous)
 
-    }
+  //   }
 
-   })
+  //  })
 
 
   //  for(let i=0;i<myData.length;i++)
@@ -161,54 +237,55 @@ useEffect(() => {
   //   }
   //  })
     
-  }         
-  const handleRight=()=>{       
+  // }         
+  // const handleRight=()=>{       
     
-    monthData.map((item,index)=>{ 
+  //   monthData.map((item,index)=>{ 
     
-      if(item.month === current)  
-      {
-        let nextIndex= index+1
-        if(nextIndex >= 12)
-        {
-          nextIndex = 0
-        }
-        const myNext = monthData[nextIndex].month
-        setCurrent(myNext)     
-        dataReceiver(myNext)   
-      }
+  //     if(item.month === current)  
+  //     {
+  //       let nextIndex= index+1
+  //       if(nextIndex >= monthData.length)
+  //       {
+  //         nextIndex = 0
+  //       }
+  //       const myNext = monthData[nextIndex].month
+  //       setCurrent(myNext)     
+  //       dataReceiver(myNext)   
+  //     }
 
-   })
+  //  })
 
    //for past
-   for(let i=0;i<myData.length;i++)
-   {
-     if(myData[i].month === current)
-     {
-       var firstOne= myData.findIndex((item)=>item.month === current)
-       var prev=firstOne-1
-      if(firstOne < 0)
-      {
-        prev =myData.length-1
-      }
-     //  else if(firstOne >= mydata.length)
-     //  {
-     //   prev =0
-     //  }       
-       var value = myData[prev].month.toString()
-       var previous = myData.filter(item => item.month === value)
-       setPast(previous)
-     }
-   }     
+  //  for(let i=0;i<myData.length;i++)
+  //  {
+  //    if(myData[i].month === current)
+  //    {
+  //      var firstOne= myData.findIndex((item)=>item.month === current)
+  //      var prev=firstOne-1
+  //     if(firstOne < 0)
+  //     {
+  //       prev =myData.length-1
+  //     }
+  //    //  else if(firstOne >= mydata.length)
+  //    //  {
+  //    //   prev =0
+  //    //  }       
+  //      var value = myData[prev].month.toString()
+  //      var previous = myData.filter(item => item.month === value)
+  //      setPast(previous)
+  //    }
+  //  }     
 
-  }
+  //  }
 
   
 
   return (
     
     <>
-    {console.log("days",days )}
+    
+   
 
 <div className="myCalCont">
 <div  className="table"> 
@@ -220,7 +297,7 @@ useEffect(() => {
       <i className="bi bi-chevron-right right"  onClick={handleRight}></i>        
     </span>
     </div>
-    <ul className="weeks">
+    {/* <ul className="weeks">
       <li className="weekDays">Sun</li>
       <li className="weekDays">Mon</li>
       <li className="weekDays">Tue</li>
@@ -239,26 +316,30 @@ useEffect(() => {
             {day}
           </div>
         ))}
-      </div>
+      </div> */}
 
   </div>
-  <PastCeleb myPast={past}/>
+  {/* <PastCeleb myPast={past}/> */}
   </div> 
 
-   
+   {/* //For testing */}
+   <div>
+    {monthData.map((item, index) => {
+      return (
+        <>
+        <h2 key ={index}>
+          {item.month}
+        </h2>
+        <h2>
+          {index}
+        </h2>
+        </>
+      )
+    })}
+    </div>
 
     </>
-  );
+  )
 }
-export default Calendar
 
-
-
-
-
-
-
-
-
-
-
+export default Calendar;
