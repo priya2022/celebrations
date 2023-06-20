@@ -8,7 +8,7 @@ import PastCeleb from '../PastCelebrations/PastCeleb';
 
 
 
-const Cal=({items,dataReceiver})=> {
+const Cal=({items,dataReceiver,pastData})=> {
 
 const {myData} = useContext(ListingContext)
 
@@ -31,6 +31,7 @@ useEffect(() => {
   
 }, [currentMonth,myData])
 
+
 const handleClickChange=(value)=>{
 
   if(value === "left")
@@ -46,6 +47,7 @@ const handleClickChange=(value)=>{
         setCurrent(myPrevious)
          updateCalendarDays(myPrevious)
          dataReceiver(myPrevious)
+         pastData(myPrevious)
         
       }
     }) 
@@ -65,7 +67,8 @@ const handleClickChange=(value)=>{
         setCurrent(myNext)
         updateCalendarDays(myNext)
         dataReceiver(myNext)
-
+        pastData(myNext)
+        
       }      
     })
   }
@@ -80,7 +83,7 @@ const handleClickChange=(value)=>{
   return (
     
     <>
-{console.log("mydays inCalendar to be highlighted",days)}
+
 <div className="myCalCont">
 <div  className="table"> 
 

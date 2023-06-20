@@ -1,0 +1,12 @@
+rgba(244, 95, 127, 1) - pink   
+rgba(244, 95, 127, 0.2)
+
+rgba(6, 63, 209, 1) - blue rgba(6, 63, 209, 0.2)
+
+
+rgba(250, 172, 63, 1) - orange
+
+rgba(250, 172, 63, 0.2)
+
+
+variant={getButtonVariant(level.level)} 

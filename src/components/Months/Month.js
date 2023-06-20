@@ -23,7 +23,7 @@ const Month = () => {
   useEffect(()=>
   {
     setCurrent(mynewMonth)
-    console.log("month Current", mynewMonth)
+    
   },[mynewMonth])
 
   useEffect(()=>{    
@@ -93,9 +93,7 @@ const Month = () => {
           }       
           const myPrevious = data[previous].month
           setmyMonth(myPrevious)
-          updateCalendarDays(myPrevious)
-          
-          
+          updateCalendarDays(myPrevious)                    
         }
       }) 
     }
@@ -121,8 +119,6 @@ const Month = () => {
 
    const myMonthData = {monthData:data,monthDays:days, updateCalendarDays:updateCalendarDays}
 
-  
-  
   return (
    
     <MonthContext.Provider value ={myMonthData} >
@@ -143,7 +139,7 @@ const Month = () => {
     </div>
 
     
-  <Listing month={month} CurrentMonth={mynewMonth} monthDataReceiver={dataReceiver}/> 
+    <Listing month={month} CurrentMonth={mynewMonth} monthDataReceiver={dataReceiver}/> 
     
     </MonthContext.Provider>
   )

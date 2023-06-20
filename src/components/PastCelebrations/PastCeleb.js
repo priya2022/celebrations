@@ -4,15 +4,15 @@ import './pastCelebration.css'
 import { Link } from 'react-router-dom'
 
 
-const PastCeleb = ({myPast}) => {
+const PastCeleb = () => {
 const {prevData} = useContext(ListingContext)
-const dataToMap = myPast ? myPast : prevData;
+// const dataToMap = myPast ? myPast : prevData;
   return (
     <>
 
       <h2 className="pheading">See Past celebrations</h2>
       {
-       dataToMap.map(item=>{
+       prevData.map(item=>{
 
         if(item.title){
           return(
@@ -37,14 +37,9 @@ const dataToMap = myPast ? myPast : prevData;
         }
         else{
           return null;
-        }
-       
+        }       
        })
       }
-      
-      
-      
-      
     </>
    
   )

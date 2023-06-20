@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, {  useEffect, useState,createContext } from 'react'
 import Card from 'react-bootstrap/Card';
 import './Listing.css'
-import Calendar from '../Calendar/Calendar';
 import { Link } from 'react-router-dom';
 import Cal from '../Calendar/Cal';
 export const ListingContext = createContext();
@@ -14,9 +13,8 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
     const [mydata, setData] = useState([])
     const [calData,setCalData]=useState([])
     const [prevData,setPrev] = useState([])
-
-    
-
+    const [past,setPast]=useState([])
+ 
     const callgetApi=async()=>{
       const response = await axios.get("https://646352d67a9eead6fae32f76.mockapi.io/months")
       setData(response.data)
@@ -26,59 +24,75 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
        callgetApi()
      },[])
 
+     
+
      const myCurrentMonth= Object.values({CurrentMonth})[0]
      const myMonth= Object.values({month})[0]
      const selectedMonth = myMonth||myCurrentMonth
-    
+     filteredData= mydata.filter((item)=> item.month === selectedMonth )
 
      useEffect(()=>{
-      //CallData
-      const initialData = mydata.filter((item)=> item.month === selectedMonth)
-      setCalData(initialData)  
-      console.log("initialData",initialData)
-      
-      //Previous Month
-      // for(let i=0;i<mydata.length;i++)
-      // {
-      //   if(mydata[i].month === selectedMonth)
-      //   {
-      //     var firstOne= mydata.findIndex((item)=>item.month === selectedMonth)
-      //     console.log("firstOne",firstOne)
-      //     var previousIndex=firstOne-1   
 
-      //     var value = mydata[previousIndex].month.toString()
-      //     console.log("myMonth",value)
-      //     var previous = mydata.filter(item => item.month === value)
-      //     console.log("letMyPrevious",previous)
-      //     setPrev(previous)
-      //   }
-      // }
-       
-     },[selectedMonth, mydata])
+
+      const filteredData = mydata.filter((item) => item.month === selectedMonth);
+        setCalData(filteredData);
+        
+        toSetPast()
+
+
+    //     const currentIndex = mydata.findIndex((item) => item.month === selectedMonth);
+    // const previousIndex = currentIndex - 1;
+    // if (previousIndex >= 0) {
+    //   const previousMonth = mydata[previousIndex].month;
+    //   const previousData = mydata.filter((item) => item.month === previousMonth);
+    //   setPast(previousData);
+    // } else {
+    //   setPast([]);
+    // }
+
+
+
+        // if (previousIndex >= 0) {
+        //   const previousMonth = filteredData[previousIndex].month;
+        //   const previousData = filteredData.filter((item) => item.month === previousMonth);
+          
+        //   setPast(previousData)
+
+        // } else {
+        //   setPast([]);
+        // }
+     },[selectedMonth,mydata])
+
+     const toSetPast = (calValue)=>{
+    console.log("calValue",calValue)
+    const month =   calValue || selectedMonth
+      const currentIndex = mydata.findIndex((item) => item.month === month);
+        const previousIndex = currentIndex - 1;
+        if (previousIndex >= 0) {
+          const previousMonth = mydata[previousIndex].month;
+          const previousData = mydata.filter((item) => item.month === previousMonth);
+          setPast(previousData);
+        } else {
+          setPast([]);
+        }
+     }
      
      
      const dataReceiver = (data)=>{      
-      
-
         monthDataReceiver(data)
-     
         filteredData= mydata.filter((item)=>item.month === data)         
         setCalData(filteredData)
-
-        const calendarMonth = calData.map(item=> item.month )        
-        const calendarValue = Object.values(calendarMonth)[0] 
-
      }
  
-      filteredData= mydata.filter((item)=> item.month === selectedMonth )
+      
 
       var previousAndListData = {
-        prevData,myData:mydata 
+        prevData:past,myData:mydata 
       }
 
        return (
         <>
-         
+         {/* {console.log("past inListing",past)} */}
       <ListingContext.Provider value={previousAndListData}>
      
        <div className="myListingcontainer">      
@@ -89,8 +103,8 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
             if(item.title)
             {
               return(
-              <Link to ={`/${item.id}`} >
-                {console.log("previousINLisnting",prevData)}
+              <Link to ={`/${item.id}`} > 
+                  
                 <Card key ={item.id} className="myCard">
                 <Card.Img  variant="left" className="cardimg" src={item.img} />    
                  <Card.Body className="cardBody">
@@ -115,8 +129,8 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
           })
         }
         </div>       
-        {/* <Calendar items={calData} dataReceiver = {dataReceiver}/> */}
-        <Cal  items={calData} dataReceiver = {dataReceiver}/>
+        <Cal  items={calData} dataReceiver = {dataReceiver} pastData ={toSetPast}/>
+        
         </ListingContext.Provider>
         </>
       
