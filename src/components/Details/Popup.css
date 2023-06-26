@@ -3,7 +3,11 @@
     border-top-left-radius:50px;
     border-top-right-radius:50px;
     display:flex;
+    transition: height 0.5s ease-in-out;
 }
+
+
+  
 .PopUpcontainer::-webkit-scrollbar {
     display: none;
 }

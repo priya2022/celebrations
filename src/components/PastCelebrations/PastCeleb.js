@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 const PastCeleb = () => {
 const {prevData} = useContext(ListingContext)
+
 // const dataToMap = myPast ? myPast : prevData;
   return (
     <>

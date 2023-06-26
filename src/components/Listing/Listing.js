@@ -24,8 +24,6 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
        callgetApi()
      },[])
 
-     
-
      const myCurrentMonth= Object.values({CurrentMonth})[0]
      const myMonth= Object.values({month})[0]
      const selectedMonth = myMonth||myCurrentMonth
@@ -113,7 +111,7 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
                     {item.description}
                    </Card.Text>
                    <Card.Text className="text">
-                     <span>{item.month} {item.day}</span>
+                     <span className="MonthDay">{item.month} {item.day}</span>
                     <span className="icon"><i class="bi bi-arrow-right-short"></i></span>
                    </Card.Text>                 
                  </Card.Body>

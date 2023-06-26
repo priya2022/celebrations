@@ -14,7 +14,6 @@ const {myData} = useContext(ListingContext)
 
   const [data,setData]= React.useState([])
   const [past,setPast]=useState()
-  const[highlighDays,setHighlightDays]= useState([])
 
   const {monthData,monthDays,updateCalendarDays} = useContext(MonthContext)
 
@@ -25,17 +24,7 @@ const {myData} = useContext(ListingContext)
 const uniqueMonth =[...new Set(items.map(item=>item.month))]
 const currentMonth = uniqueMonth[0]
 
-var days =(items.map(item=> {return item.day}))
 
-useEffect(()=>{
-  const myDayinCal = monthDays.map(day=>day)
-  console.log("myDayinCal",myDayinCal)
-  const dayValue = days.every(value=> myDayinCal.includes(value))
-  console.log("dayValue",dayValue )
-  const containsValue = days.every(value=>myDayinCal.includes(value))
-  setHighlightDays(containsValue)
-  console.log("containsValue",containsValue)
-},[monthDays,days])
 
 useEffect(() => { 
   setCurrent(currentMonth)
@@ -86,27 +75,26 @@ const handleClickChange=(value)=>{
 
  }
     
+
+ 
   
+  var days =(items.map(item=> {return item.day}))
 
   return (
     
     <>
-{/* {console.log("mydaytssdin hignkdreturh",containsValue)} */}
+
 <div className="myCalCont">
 <div  className="table"> 
 
     <div className='monthdisplay'>                 
     <h4 className="calHead">{current}  2023</h4>
-      <span className="arrow">
+      <span>
      <i className="bi bi-chevron-left " onClick={handleClickChange.bind(this,"left")}></i>
       <i className="bi bi-chevron-right " onClick={handleClickChange.bind(this,"right")} ></i>  
     </span>
    
   </div> 
-
-    
-  <div className="mainContent">
-
   <ul className="weeks">
       <li className="weekDays">Sun</li>
       <li className="weekDays">Mon</li>
@@ -119,31 +107,18 @@ const handleClickChange=(value)=>{
 
     <div className="calendar">
         {monthDays.map((day, index) => (
-                // const containsValues = valuesToCheck.every(value => days.includes(value));
-
-          // <div
-          //   key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${highlighDays ? 'theme' : ''}`}>
-          //   {day}
-          // </div>
-
-          
-          // <div
-          // key={index} className={ highlighDays ? 'theme' : ''}>
-          // {day}
-          // </div>
-
-          
           <div
-          key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${days.includes(day) ? 'theme' : ''}`}>
-          {day}
-        </div>
+            key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${days.includes(2) ? 'theme' : ''}`}>
+            {day}
+          </div>
+        //   <div
+        //   key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${days.includes(day) ? 'theme' : ''}`}>
+        //   {day}
+        // </div>
 
           
         ))}
-        {console.log("myDays",monthDays)}
       </div> 
-      </div>
-
 
   </div>
   <PastCeleb />

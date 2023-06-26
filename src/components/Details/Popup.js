@@ -1,24 +1,58 @@
-import { useState,useEffect } from 'react';
+import { useState,useEffect, createContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './Popup.css'
 import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import { saveProject,removeProject } from '../Features/Save';
 import { useParams ,useNavigate} from 'react-router-dom';
 
+export const SaveContext = createContext();
+
 function Popup() {
+
   const [show, setShow] = useState(true);
-  const handleClose = () => {
-    setShow(false)
-    navigate('/')
-  
-  };
-  const navigate= useNavigate()
-  
-
-
   const {id} = useParams();
-    const [data, setData] = useState([])
+  const [data, setData] = useState([])
+  const[save,setSave] = useState({})
+  const [isSaved,setIsSaved] =useState(false)
+
+
+  const navigate= useNavigate()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const savedState = localStorage.getItem('savedState');
+    setIsSaved(savedState === 'true');
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('savedState', isSaved);
+  }, [isSaved]);
+
  
+  const handleSave = (data) => {
+    if (!isSaved) {
+      dispatch(saveProject(data));
+    }
+    else{
+      dispatch(removeProject(data.id))
+      
+    }
+    setIsSaved((prevState) => !prevState);
+  };
+  // useEffect(()=>{
+  //   localStorage.setItem('savedState',isSaved)
+  // },[isSaved])
+
+  // useEffect(()=>{
+  //   const savedState= localStorage.getItem('savedState')
+  //   if(savedState === 'true')
+  //   {
+  //     setIsSaved(true)
+  //   }
+  // },[])
+
     useEffect(()=>{
         
         axios.get( `https://646352d67a9eead6fae32f76.mockapi.io/months/${id}`)
@@ -33,13 +67,39 @@ function Popup() {
           });
     },[])
 
+    const handleClose = () => {
+      setShow(false)
+      navigate('/')
+    
+    }
+
+    // const handleSave = (item) => {
+    //   if (!isSaved) {
+    //     setSave(item)
+    //     dispatch(saveProject(data));
+    //   }
+    //   setIsSaved(!isSaved);
+    // };
+
+
+    // const handleSave=(item)=>{
+    //   if(save === null){
+    //     setSave(item)
+    //   dispatch(saveProject(item))
+
+    //   }
+    //   else{
+    //     setSave(null)
+    //   }
+    //   // handleClose()
+    // }
 
 
   return (
     <>
-      
 
-    <div>
+    <SaveContext.Provider value ={save}>
+      {console.log("mySaved items",save)}
       <Offcanvas show={show} onHide={handleClose} placement="bottom" className="PopUpcontainer" >
         <Offcanvas.Header closeButton className="popUpHeader">
           <Offcanvas.Title ></Offcanvas.Title>
@@ -55,7 +115,22 @@ function Popup() {
 
               <div className="popUpButton">
                 <Button className='myButton'>Celebration</Button>
-                <Button className='saveBtn' variant="outline-warning">Save</Button>
+                <Button  className='saveBtn' variant="outline-warning" onClick={handleSave.bind(this, data)}>
+                  {isSaved ? 'Saved': "Save"}
+                </Button>
+                {/* <Button className='saveBtn' onClick={handleSave.bind(this, data)} variant="outline-warning">Save</Button> */}
+
+                {/* handleSave to display either save or saved option */}
+                {/* {
+                  save === null ? 
+                  (
+                    <Button className='saveBtn' onClick={handleSave.bind(this,data)} variant="outline-warning"> saved</Button>
+                  )
+                  :
+                  (
+                <Button className='saveBtn' onClick={handleSave} variant="outline-warning">Save</Button>
+                  )
+                } */}
               </div>
 
               <div className="popUpTitle">
@@ -81,22 +156,19 @@ function Popup() {
                   </div>
                   <div className="setDiv">
                   <img src="" alt=""  className="popUPIMage"/>
-                  </div>
-
-                  
+                  </div> 
                 </div>
-
-
-
             </div>
-
             </div>
         </Offcanvas.Body>
       </Offcanvas>
-      </div>
+      </SaveContext.Provider>
+      
 
     </>
   );
 }
 
 export default Popup;
+
+   

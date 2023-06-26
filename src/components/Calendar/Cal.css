@@ -1,0 +1,47 @@
+/* .myCalCont
+{
+    border: 2px solid yellow;
+    width:50%;
+}
+.table{
+    border:2px solid blue;
+}
+.monthdisplay{
+    border: 2px solid pink;
+}
+.calHead{
+    border: 2px solid violet;
+}
+.arrow{
+    border: 2px solid black;
+    margin:15px;
+}
+/* ul li{
+    list-style: none;
+    margin-left:0;
+} */
+/* .mainContent{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(50px, 50px))
+}
+ */
+ /* .weeks{
+    list-style: none;
+    padding:0;
+    margin:0;
+ }
+
+.weeks{
+border: 2px solid red;
+display:grid;
+grid-template-columns:repeat(7,minmax(50px,50px));
+
+}
+.weekDays{
+    margin-left:0;
+}
+.calendar{
+    border: 2px solid green;
+    display:grid;
+    grid-template-columns:repeat(7,minmax(50px,50px));
+} */ 

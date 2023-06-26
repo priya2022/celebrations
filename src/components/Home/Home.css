@@ -33,4 +33,7 @@
 .title{
     margin-left : 20px;
 }
-
+.myLink{
+    color:white !important;
+    text-decoration: none;
+}

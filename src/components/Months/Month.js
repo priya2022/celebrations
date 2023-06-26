@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Listing from '../Listing/Listing';
 import './Month.css'
+import { useSelector } from 'react-redux';
 const initialMonth = [
   "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
 ]
@@ -10,21 +11,24 @@ const initialMonth = [
 export const MonthContext = createContext()
 
 const Month = () => {
-  
-  const [month,setMonth]= useState('')
- const [mynewMonth,setmyMonth]= useState(initialMonth)
- const [highlight,setHighlight]= useState('')
-  const [data,setData]=useState([])
-  const [days, setDays] = useState([]);
-  const [monthCurrent,setCurrent] = useState([])
+
+  const user= useSelector(state=>state.user.value)
+
+ 
+    const [month,setMonth]= useState('')
+    const [mynewMonth,setmyMonth]= useState(initialMonth)
+    const [highlight,setHighlight]= useState('')
+    const [data,setData]=useState([])
+    const [days, setDays] = useState([]);
+    const [monthCurrent,setCurrent] = useState([])
 
 
   //For testing
   useEffect(()=>
   {
     setCurrent(mynewMonth)
-    
-  },[mynewMonth])
+    setHighlight(monthCurrent)
+  },[mynewMonth,monthCurrent])
 
   useEffect(()=>{    
 
@@ -75,6 +79,7 @@ const Month = () => {
   
   const dataReceiver = (data)=>{    
     setHighlight(data)  
+    
   }   
 
    
@@ -118,11 +123,14 @@ const Month = () => {
    }
 
    const myMonthData = {monthData:data,monthDays:days, updateCalendarDays:updateCalendarDays}
-
+   
+  //  if(!user.email){
+  //   return
+  // }
   return (
    
     <MonthContext.Provider value ={myMonthData} >
-    
+    {console.log("letHignhtlightedData",highlight)}
     <div className="new">      
     <div className= "myMon"  gap={2} style={{"marginTop":"3%"}}>
     {

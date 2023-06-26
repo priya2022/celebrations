@@ -1,0 +1,27 @@
+.savCol{
+border: 2px solid red !important;
+}
+.saveCard{
+    border: 2px solid rgb(27, 226, 210) !important;
+    width:300px;
+    height:500px;
+    position:relative;
+}
+.saveBody{
+    border: 2px solid violet;
+    width:90%;
+    height: 90%;
+    margin-left:auto;
+    margin-right: auto;
+}
+.saveImg{
+    border: 2px solid green !important;
+    width:100%;
+    height:80%;
+    margin-left: auto;
+    
+    position:relative;
+}
+.saveTitle{
+    border: 2px solid yellow !important;
+}
