@@ -130,7 +130,6 @@ const Month = () => {
   return (
    
     <MonthContext.Provider value ={myMonthData} >
-    {console.log("letHignhtlightedData",highlight)}
     <div className="new">      
     <div className= "myMon"  gap={2} style={{"marginTop":"3%"}}>
     {

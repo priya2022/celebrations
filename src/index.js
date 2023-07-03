@@ -6,11 +6,12 @@ import Router from './Router';
 import {configureStore} from '@reduxjs/toolkit'
 import { Provider } from 'react-redux';
 import saveReducer from './components/Features/Save';
-import App from './App';
 import userReducer from './components/Features/User'
+import ListingReducer from './components/Features/List'
 
 const store = configureStore({
     reducer:{
+        listing:ListingReducer,
         save:saveReducer,
         user:userReducer
     }

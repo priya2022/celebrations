@@ -27,15 +27,15 @@ const currentMonth = uniqueMonth[0]
 
 var days =(items.map(item=> {return item.day}))
 
-useEffect(()=>{
-  const myDayinCal = monthDays.map(day=>day)
-  console.log("myDayinCal",myDayinCal)
-  const dayValue = days.every(value=> myDayinCal.includes(value))
-  console.log("dayValue",dayValue )
-  const containsValue = days.every(value=>myDayinCal.includes(value))
-  setHighlightDays(containsValue)
-  console.log("containsValue",containsValue)
-},[monthDays,days])
+// useEffect(()=>{
+//   const myDayinCal = monthDays.map(day=>day)
+//   console.log("myDayinCal",myDayinCal)
+//   const dayValue = days.every(value=> myDayinCal.includes(value))
+//   console.log("dayValue",dayValue )
+//   const containsValue = days.every(value=>myDayinCal.includes(value))
+//   setHighlightDays(containsValue)
+//   console.log("containsValue",containsValue)
+// },[monthDays,days])
 
 useEffect(() => { 
   setCurrent(currentMonth)
@@ -91,6 +91,7 @@ const handleClickChange=(value)=>{
   return (
     
     <>
+    {console.log("current month",current)}
 {/* {console.log("mydaytssdin hignkdreturh",containsValue)} */}
 <div className="myCalCont">
 <div  className="table"> 
@@ -140,7 +141,6 @@ const handleClickChange=(value)=>{
 
           
         ))}
-        {console.log("myDays",monthDays)}
       </div> 
       </div>
 

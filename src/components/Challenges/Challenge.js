@@ -112,7 +112,6 @@ const Challenge = () => {
 
     const handleChange=(level)=>{
         setSelected(level)
-        console.log("levels",level)
         setSelectedButton(level)
     }
 

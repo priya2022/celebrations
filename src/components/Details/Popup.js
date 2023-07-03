@@ -14,6 +14,7 @@ function Popup() {
   const [show, setShow] = useState(true);
   const {id} = useParams();
   const [data, setData] = useState([])
+  
   const[save,setSave] = useState({})
   const [isSaved,setIsSaved] =useState(false)
 
@@ -58,7 +59,6 @@ function Popup() {
         axios.get( `https://646352d67a9eead6fae32f76.mockapi.io/months/${id}`)
         .then(response => {
             // Handle the response data
-            console.log(response.data);
             setData(response.data)
           })        
           .catch(error => {
@@ -99,7 +99,6 @@ function Popup() {
     <>
 
     <SaveContext.Provider value ={save}>
-      {console.log("mySaved items",save)}
       <Offcanvas show={show} onHide={handleClose} placement="bottom" className="PopUpcontainer" >
         <Offcanvas.Header closeButton className="popUpHeader">
           <Offcanvas.Title ></Offcanvas.Title>
@@ -115,7 +114,7 @@ function Popup() {
 
               <div className="popUpButton">
                 <Button className='myButton'>Celebration</Button>
-                <Button  className='saveBtn' variant="outline-warning" onClick={handleSave.bind(this, data)}>
+                <Button  className={`saveBtn ${isSaved ? 'toYellow': ''}`} variant="outline-warning" onClick={handleSave.bind(this, data)}>
                   {isSaved ? 'Saved': "Save"}
                 </Button>
                 {/* <Button className='saveBtn' onClick={handleSave.bind(this, data)} variant="outline-warning">Save</Button> */}
@@ -134,11 +133,12 @@ function Popup() {
               </div>
 
               <div className="popUpTitle">
-                 <h4 className="popUpMainTitle">{data.title}</h4><span className="text-muted muted">{data.month} {data.day}, {data.year}</span>
+                 <h4 className="popUpMainTitle">{data.title}</h4><span className=" month">{data.month} {data.day}, {data.year}</span>
                   <p className="dataDescription">{data.description}</p>
               </div>
-
+                  <h2 className="inspirations">Inspirations</h2>
                 <div className="DetailedImage">
+                
                   <div className="setDiv">
                   <img src="" alt=""  className="popUPIMage" />
                   </div>
