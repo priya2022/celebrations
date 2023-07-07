@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Listing from './components/Listing/Listing'
-import Calendar from './components/Calendar/Calendar'
+// import Calendar from './components/Calendar/Calendar'
 import PastCeleb from './components/PastCelebrations/PastCeleb'
 import App from './App'
 import Popup from './components/Details/Popup'
@@ -10,7 +10,7 @@ import Home from './components/Home/Home'
 import Save from './components/SaveProject/Save'
 import Login from './components/Authentication/Login/Login'
 import Signup from './components/Authentication/Login/Signup'
-import ImageMasonry from './components/Masonry/ImageMasonry'
+// import ImageMasonry from './components/Masonry/ImageMasonry'
 
 
 // const Listing = lazy(() => import('./components/Listing/Listing'));
