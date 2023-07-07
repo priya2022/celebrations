@@ -1,13 +1,14 @@
 .PopUpcontainer{
+    /* height:95vh !important; */
     height:95vh !important;
     border-top-left-radius:50px;
     border-top-right-radius:50px;
     display:flex;
-    transition: height 0.5s ease-in-out;
+    transition: height 3s;
 }
-
-
-  
+.PopUpcontainer.clicked{
+    height:95vh;
+}
 .PopUpcontainer::-webkit-scrollbar {
     display: none;
 }
@@ -22,7 +23,6 @@
     margin:auto;
     margin-top:2%;
     color:black;
-
 }
 
 .popUpContent{
@@ -109,6 +109,7 @@ font-weight: 600;
 font-size: 20px;
 font-family: Source Serif Pro;
 font-weight: 300;
+margin-left:10px;
 }
 .dataDescription{
 font-family: 'Source Serif Pro';
@@ -145,4 +146,7 @@ font-weight: 600;
 }
 .toYellow{
     background-color:#ffc107;
+}
+.highlightYellow{
+    background-color:#ffc107; 
 }

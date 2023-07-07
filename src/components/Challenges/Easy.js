@@ -8,7 +8,6 @@ const Easy = ({level,data}) => {
   return (
     <div>
 
-      <h2>Easy</h2>
         {
           data.flatMap(level => {
             return(

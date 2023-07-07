@@ -9,7 +9,8 @@ export const ListingSlice = createSlice({
             img:'',
             description:'',
             day:'',
-            month:''
+            month:'',
+            isSaved:''
         }
     },
     reducers:{

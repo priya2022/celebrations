@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 
 const PastCeleb = () => {
 
-const [show, setShow] = useState(false); 
+const [showPopup, setShowPopup] = useState(false); 
 const {prevData} = useContext(ListingContext)
 const dipatch = useDispatch()
 
@@ -18,7 +18,7 @@ const dipatch = useDispatch()
 const handleSubmit=(data)=>{
   const {id,title,img,description,month,day}=data
   dipatch(popUp({id,title,img,description,month,day}))
-  setShow(!show)
+  setShowPopup(!showPopup)
  }
 
 // const dataToMap = myPast ? myPast : prevData;
@@ -35,9 +35,7 @@ const handleSubmit=(data)=>{
             <div className="pastCel">
   
               <div className="imgDiv ForAlign celebrityBox">
-                <div className="imgBox">
-                <img className="pastCelImage" src={item.img} alt="" />
-                </div>
+              <img className="pastCelImage" src={item.img} alt="" />
               </div>
   
               <div className='ForAlign celebTitle celebrityBox'>
@@ -45,7 +43,7 @@ const handleSubmit=(data)=>{
               </div>
   
               <div className='ForAlign celebLink celebrityBox'>
-                <div className="celebrityBox2">
+                <div className="celebrityLink">
               <i class="bi bi-chevron-right alignCelebLink"></i>
                 </div>
               </div>
@@ -58,11 +56,12 @@ const handleSubmit=(data)=>{
         }       
        })
       }
-  {
 
-show && <PopDis show={show} setShow ={setShow}/>
+      {
 
-}
+      showPopup && <PopDis/>
+
+      }
 
     </>
    

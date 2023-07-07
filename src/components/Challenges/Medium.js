@@ -7,11 +7,8 @@ const Medium = ({level,data}) => {
   const value= level.toString()
   return (
     <div>
-  
 
-  <h2>medium</h2>
-      
-         {
+{
           data.flatMap(level => {
             return(
                 <>     
@@ -24,9 +21,9 @@ const Medium = ({level,data}) => {
                           
                             <>
                             <Col>
-                            <Card style={{ width: '18rem',border:"2px solid red" }} className="designCC" >                
+                            <Card style={{ width: '18rem' }} className="designCC">                
                             <Card.Body>                                                        
-                              <Button className="desMedium" >{data.level}</Button>                                                                                               
+                              <Button className="desEasy" >{data.level}</Button>                                                                                               
                             </Card.Body>
                              </Card>
                              </Col>
@@ -40,7 +37,7 @@ const Medium = ({level,data}) => {
                 
             )          
         })
-        }
+        }  
       
 
     </div>

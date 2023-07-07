@@ -1,25 +1,3 @@
-// import {createSlice} from '@reduxjs/toolkit'
-
-// export const saveSlice = createSlice({
-//     name:"save",
-//     initialState:{
-//         value:{
-//             title:'',
-//             img:"",
-//             description:''
-//         }
-//     },
-
-//     reducers:{
-//         saveProject:(state,action)=>{
-//             state.value = action.payload
-//         }
-//     }
-
-// }) 
-
-// export const {saveProject}= saveSlice.actions
-// export default saveSlice.reducer
 
 import {createSlice} from '@reduxjs/toolkit'
 
@@ -29,9 +7,21 @@ export const saveSlice= createSlice({
         projects:[],
     },
     reducers:{
-        saveProject:(state,action)=>{
-        state.projects.push(action.payload)          
+
+      saveProject:(state,action)=>{
+
+        const existingIndex= state.projects.findIndex(item=>item.id === action.payload.id)
+
+        if(existingIndex === -1){
+            state.projects.push(action.payload)     
+        }
+        else {
+            state.projects[existingIndex] = action.payload;
+          }
+       
+        
         },
+       
         removeProject:(state,action)=>{
             const projectId = action.payload;
             state.projects = state.projects.filter((project)=> project.id !== projectId )

@@ -10,22 +10,23 @@ import PastCeleb from '../PastCelebrations/PastCeleb';
 
 const Cal=({items,dataReceiver,pastData})=> {
 
-const {myData} = useContext(ListingContext)
 
   const [data,setData]= React.useState([])
   const [past,setPast]=useState()
+  const [current, setCurrent]= useState()
+
   const[highlighDays,setHighlightDays]= useState([])
 
   const {monthData,monthDays,updateCalendarDays} = useContext(MonthContext)
 
-  const [current, setCurrent]= useState()
+  const {myData} = useContext(ListingContext)
 
 
- 
 const uniqueMonth =[...new Set(items.map(item=>item.month))]
 const currentMonth = uniqueMonth[0]
 
 var days =(items.map(item=> {return item.day}))
+var mydays = days.filter(Boolean)
 
 // useEffect(()=>{
 //   const myDayinCal = monthDays.map(day=>day)
@@ -38,7 +39,8 @@ var days =(items.map(item=> {return item.day}))
 // },[monthDays,days])
 
 useEffect(() => { 
-  setCurrent(currentMonth)
+  const MyCurrentMonth =  currentMonth 
+  setCurrent(MyCurrentMonth)
   
 }, [currentMonth,myData])
 
@@ -50,6 +52,7 @@ const handleClickChange=(value)=>{
     monthData.map((item,index)=>
     {
       if(item.month === current){
+        console.log("current month in hanldeClickchange",current)
         let previous = index - 1;
         if(previous < 0){
           previous = monthData.length -1
@@ -91,7 +94,8 @@ const handleClickChange=(value)=>{
   return (
     
     <>
-    {console.log("current month",current)}
+    {console.log("current month in calendar",uniqueMonth)}
+    {console.log("days",mydays)}
 {/* {console.log("mydaytssdin hignkdreturh",containsValue)} */}
 <div className="myCalCont">
 <div  className="table"> 
@@ -119,7 +123,7 @@ const handleClickChange=(value)=>{
     </ul>
 
     <div className="calendar">
-        {monthDays.map((day, index) => (
+        {/* {monthDays.map((day, index) => (
                 // const containsValues = valuesToCheck.every(value => days.includes(value));
 
           // <div
@@ -135,12 +139,28 @@ const handleClickChange=(value)=>{
 
           
           <div
-          key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${days.includes(day) ? 'theme' : ''}`}>
+          key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${mydays.includes(day) ? 'theme' : ''}`}>
           {day}
         </div>
 
           
-        ))}
+        ))} */}
+
+{monthDays.map((day, index) => {
+    let className = 'calendar-day';
+
+    if (day === '') {
+      className += ' empty-day';
+    } else if (mydays.includes(day)) {
+      className += ' theme';
+    }
+
+    return (
+      <div key={index} className={className}>
+        {day}
+      </div>
+    );
+  })}
       </div> 
       </div>
 

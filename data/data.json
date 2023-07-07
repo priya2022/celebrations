@@ -1,0 +1,212 @@
+
+[
+  {
+    "id": "1",
+    "month": "Jan"
+  },
+  {
+    "id": "2",
+    "month": "Feb"
+  },
+  {
+    "id": "3",
+    "month": "Mar"
+  },
+  {
+    "id": "4",
+    "month": "Apr"
+  },
+  {
+    "id": "5",
+    "title": "Mothers Day",
+    "description": "Mother's Day has gained worldwide recognition and is celebrated in various ways. It is a day when people express their love and gratitude towards their mothers, grandmothers, and mother figures by giving them gifts, flowers, cards, or by spending quality time with them. Many families also organize special meals or outings to honor their mothers and make them feel cherished.",
+    "month": "May",
+    "day": "14",
+    "year": "2023",
+    "img": "https://i.ibb.co/cbghMmG/Rectangle-187-May14.jpg"
+  },
+  {
+    "id": "6",
+    "title": "World Environment Day ",
+    "description": "World Environment Day encourages individuals and communities to engage in activities that promote sustainable practices, conservation of natural resources, and the reduction of environmental degradation. It serves as a platform to educate people about the importance of environmental protection and to mobilize them to take concrete steps towards a greener and more sustainable future.",
+    "month": "Jun",
+    "day": "5",
+    "year": "2023",
+    "img": "https://i.ibb.co/BCrvBzb/Rectangle-187jun5.png"
+  },
+  {
+    "id": "7",
+    "title": "World Emoji day",
+    "description": "The celebration of World Emoji Day highlights the power of emojis to foster connection, understanding, and empathy in the digital age. Emojis have become an integral part of modern communication, allowing people to convey emotions, convey ideas, and create shared experiences across borders and languages.",
+    "month": "Jun",
+    "day": "5",
+    "year": "2023",
+    "img": "  https://i.ibb.co/tzmMrfz/Rectangle-187jun5-1.png"
+  },
+  {
+    "id": "8",
+    "title": "Father's Day",
+    "description": "Father's Day is a time to celebrate the bond between fathers and their children, and it serves as a reminder of the important role that fathers play in nurturing and shaping their families. It is a day to express gratitude for their love, guidance, and positive influence. It is important to approach the day with sensitivity and respect for individuals who may have different experiences or emotions surrounding fatherhood.",
+    "month": "Jun",
+    "day": "19",
+    "year": "2023",
+    "img": "https://i.ibb.co/yh4MdWN/Rectangle-187jun19.png"
+  },
+  {
+    "id": "9",
+    "title": "International Yoga Day",
+    "description": "On International Yoga Day, people around the world participate in various yoga-related activities, such as group yoga sessions, workshops, seminars, and demonstrations. These events are organized by yoga studios, community centers, schools, and other organizations to promote the practice and philosophy of yoga.",
+    "month": "Jun",
+    "day": "21",
+    "year": "2023",
+    "img": "https://i.ibb.co/2s3mNz5/Rectangle-187jun21.png"
+  },
+  {
+    "id": "10",
+    "title": "Bakrid/Eid ul-Adha",
+    "description": "The festival of Bakrid holds great significance in Islam. It serves as a reminder of the importance of faith, obedience, and selflessness. It emphasizes the value of sacrifice and the willingness to submit to God's command. Moreover, it reinforces the spirit of generosity, compassion, and community solidarity by sharing with those who are less fortunate.",
+    "month": "Jun",
+    "day": "28",
+    "year": "2023",
+    "img": "https://i.ibb.co/sPv5Hc7/Rectangle-187jun28-1.png"
+  },
+  {
+    "id": "11",
+    "title": "World Chocolate day",
+    "description": "World Chocolate Day is not only about indulgence but also about celebrating the joy, comfort, and pleasure that chocolate brings to people's lives. It is a day to share and gift chocolate with loved ones, friends, and colleagues, spreading happiness and appreciation.            Chocolate, while delicious, should be enjoyed as part of a healthy and varied diet.",
+    "month": "Jun",
+    "day": "28",
+    "year": "2023",
+    "img": "https://i.ibb.co/CPjwMNJ/Rectangle-187jun28.png"
+  },
+  {
+    "id": "12",
+    "month": "Jul"
+  },
+  {
+    "id": "13",
+    "title": "Friendship Day",
+    "description": "World Environment Day encourages individuals and communities to engage in activities that promote sustainable practices, conservation of natural resources, and the reduction of environmental degradation. It serves as a platform to educate people about the importance of environmental protection and to mobilize them to take concrete steps towards a greener and more sustainable future.",
+    "month": "Aug",
+    "day": "6",
+    "year": "2023",
+    "img": "https://i.ibb.co/4ZLgC5S/Rectangle-187aug6.png"
+  },
+  {
+    "id": "14",
+    "title": "Independence Day",
+    "description": "Independence Day in India is not only a day of celebration but also a time for reflection. It serves as a reminder of the sacrifices made by the freedom fighters and the struggles endured to secure independence. It encourages citizens to appreciate the value of freedom and the responsibility that comes with it.",
+    "month": "Aug",
+    "day": "15",
+    "year": "2023",
+    "img": "https://i.ibb.co/kMYfkVK/Rectangle-187aug15.png"
+  },
+  {
+    "id": "15",
+    "title": "Onam",
+    "description": "Onam is a joyous and vibrant festival that showcases the unique cultural traditions of Kerala. It is a time of feasting, dance, music, and merriment, as well as a time to honor the beloved mythical king, Mahabali, and celebrate the bountiful harvest season. Onam reflects the rich cultural diversity and the deep-rooted values of hospitality, unity, and prosperity that define the spirit of Kerala. ",
+    "month": "Aug",
+    "day": "28",
+    "year": "2023",
+    "img": "https://i.ibb.co/tZ8k49X/Rectangle-187aug28.png"
+  },
+  {
+    "id": "16",
+    "title": "Raksha Bandhan",
+    "description": "Raksha Bandhan goes beyond the bond between biological siblings. It also extends to include cousins, close friends, and even relationships where a woman ties a rakhi on the wrist of a man, symbolizing a protective and respectful bond.",
+    "month": "Aug",
+    "day": "30",
+    "year": "2023",
+    "img": "https://i.ibb.co/jT5W42Q/Rectangle-187aug30.png"
+  },
+  {
+    "id": "17",
+    "title": "Teachers' Day",
+    "description": "Teachers' Day is a special occasion dedicated to honoring and appreciating the valuable contributions of teachers in shaping the lives of students and society as a whole. It is celebrated in many countries around the world on different dates, but the essence remains the same — to express gratitude and respect for teachers.",
+    "month": "Sep",
+    "day": "5",
+    "year": "2023",
+    "img": "https://i.ibb.co/K25ccHs/Rectangle-187sep5.png"
+  },
+  {
+    "id": "18",
+    "title": "National Grandparents Day",
+    "description": "National Grandparents Day serves as a reminder of the importance of cherishing and valuing the wisdom and experiences of older generations. It acknowledges the significant role that grandparents play in nurturing and shaping the lives of their grandchildren, providing guidance, support, and a sense of continuity and belonging.",
+    "month": "Sep",
+    "day": "10",
+    "year": "2023",
+    "img": "https://i.ibb.co/Khnk59S/Rectangle-187sep10.png"
+  },
+  {
+    "id": "19",
+    "title": "Ganesh Chaturthi",
+    "description": "Ganesh Chaturthi is a vibrant Hindu festival that celebrates the birth of Lord Ganesha, the elephant-headed deity who is revered as the remover of obstacles, the patron of wisdom, and the god of beginnings. It is one of the most popular and widely celebrated festivals in India, particularly in the state of Maharashtra.",
+    "month": "Sep",
+    "day": "19",
+    "year": "2023",
+    "img": "https://i.ibb.co/f9YNMpF/Rectangle-187sep19.png"
+  },
+  {
+    "id": "20",
+    "title": "Dussehra",
+    "description": "The festival also serves as a reminder of the importance of standing up against evil, embracing virtuous qualities, and upholding justice and righteousness in one's life. It signifies the ultimate triumph of good over evil, light over darkness, and knowledge over ignorance.",
+    "month": "Oct",
+    "day": "24",
+    "year": "2023",
+    "img": "https://i.ibb.co/j8N4dd5/Rectangle-187oct24.png"
+  },
+  {
+    "id": "21",
+    "title": "Mahatma Gandhi Jayanti",
+    "description": "Gandhi's vision of a free and independent India based on equality and unity resonates deeply with the Indian people, and his principles continue to shape the country's cultural, social, and political fabric. Mahatma Gandhi Jayanti provides an opportunity for the nation to reflect upon his teachings, renew the commitment to nonviolence and social justice, and strive for a better world guided by his principles.",
+    "month": "Oct",
+    "day": "2",
+    "year": "2023",
+    "img": "https://i.ibb.co/VW8R8gw/Rectangle-187oct2.png"
+  },
+  {
+    "id": "22",
+    "title": "Diwali",
+    "description": "The festival symbolizes the victory of light over darkness and good over evil. It is associated with various mythological stories and legends, but the most common narrative revolves around Lord Rama's return to his kingdom Ayodhya after defeating the demon king Ravana and rescuing his wife Sita. The people of Ayodhya illuminated the entire city with earthen lamps (diyas) to welcome Lord Rama and celebrate his homecoming.",
+    "month": "Nov",
+    "day": "12",
+    "year": "2023",
+    "img": "https://i.ibb.co/g7ZHkWT/Rectangle-187nov12.png"
+  },
+  {
+    "id": "23",
+    "title": "World Kindness Day",
+    "description": "By embracing kindness and practicing it consistently, we contribute to a more compassionate and inclusive society. Kindness can improve mental well-being, strengthen relationships, and create a ripple effect of positivity, inspiring others to follow suit and spread kindness further.",
+    "month": "Nov",
+    "day": "13",
+    "year": "2023",
+    "img": "https://i.ibb.co/1J9gQYh/Rectangle-187nov13.png"
+  },
+  {
+    "id": "24",
+    "title": "Armed Forces Flag Day",
+    "description": "Armed Forces Flag Day is observed in India on December 7th every year to honor and pay tribute to the brave men and women serving in the Indian Armed Forces. The day is dedicated to raising awareness and showing support for the welfare and rehabilitation of ex-servicemen, war widows, disabled soldiers, and dependents of Indian Armed Forces personnel.",
+    "month": "Dec",
+    "day": "7",
+    "year": "2023",
+    "img": "https://i.ibb.co/FhHj6Tj/Rectangle-187armed.png"
+  },
+  {
+    "id": "25",
+    "title": "Christmas",
+    "description": "A family gathered around a flickering fireplace, decorating a beautifully adorned Christmas tree. Laughter echoed through the house as they hung colorful ornaments and strung twinkling lights. The aroma of freshly baked cookies filled the air, mingling with the scent of pine.",
+    "month": "Dec",
+    "day": "25",
+    "year": "2023",
+    "img": "https://i.ibb.co/SXH59Qg/Rectangle-187dec25.png"
+  },
+  {
+    "id": "26",
+    "title": "New Year",
+    "description": "The New Year represents a fresh start, a chance to leave behind the past and embrace new beginnings. It is a time of hope, renewal, and optimism as people embark on their journey into the unknown year ahead. It serves as a reminder to cherish the present, make the most of every moment, and approach life with positivity and resilience.",
+    "month": "Dec",
+    "day": "31",
+    "year": "2023",
+    "img": "https://i.ibb.co/9G54k62/Rectangle-187dec7.png"
+  }
+]

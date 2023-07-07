@@ -79,7 +79,6 @@ const Month = () => {
   
   const dataReceiver = (data)=>{    
     setHighlight(data)  
-    
   }   
 
    
@@ -122,7 +121,7 @@ const Month = () => {
 
    }
 
-   const myMonthData = {monthData:data,monthDays:days, updateCalendarDays:updateCalendarDays}
+   const myMonthData = {monthData:data,monthDays:days, updateCalendarDays:updateCalendarDays,monthCurrent}
    
   //  if(!user.email){
   //   return

@@ -88,7 +88,7 @@ import { styled } from '@mui/material/styles';
   }));
   
 
-export default function Challenge() {
+export default function BasicMasonry() {
   return (
     <Box sx={{ width: "84vw", minHeight: 829 ,float:"right"}}>
     <Masonry columns={3} spacing={2}>
@@ -113,3 +113,5 @@ export default function Challenge() {
   </Box>
   );
 }
+
+// #1A2027

@@ -36,7 +36,7 @@ const Home = () => {
          </div>
 
         <div> 
-          <Link className="myLink">
+          <Link to="Image" className="myLink">
           <span className="myh">
           <i class="bi bi-lightbulb myColor"></i></span>
           <span  className="myh title">Feature Work</span>

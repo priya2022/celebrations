@@ -1,14 +1,16 @@
 import axios from 'axios'
-import {useSelector} from 'react-redux'
 import { useDispatch } from 'react-redux';
-import React, {  useEffect, useState,createContext } from 'react'
+import React, {  useEffect, useState,createContext, useContext } from 'react'
 import Card from 'react-bootstrap/Card';
 import './Listing.css'
 import { popUp } from '../Features/List';
 import { Link } from 'react-router-dom';
 import Cal from '../Calendar/Cal';
+import { MonthContext } from '../Months/Month';
+
 import PopDis from '../PopUpDisplay/PopDis';
 export const ListingContext = createContext();
+
 
 
 const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
@@ -18,7 +20,7 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
     const [mydata, setData] = useState([])
     const [calData,setCalData]=useState([])
     const [prevData,setPrev] = useState([])
-    const [showPopup, setShowPopup] = useState(false); 
+    const [show, setShow] = useState(false); 
     const [past,setPast]=useState([])
 
    
@@ -27,6 +29,8 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
     // const {id,title,img,description,day,month} = popUpData
 
     const dipatch = useDispatch()
+
+  const {monthCurrent} = useContext(MonthContext)
 
     const callgetApi=async()=>{
       const response = await axios.get("https://646352d67a9eead6fae32f76.mockapi.io/months")
@@ -42,13 +46,17 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
      const selectedMonth = myMonth||myCurrentMonth
      filteredData= mydata.filter((item)=> item.month === selectedMonth )
 
+    //  const myCurrentMonth= Object.values({CurrentMonth})[0]
+    //  const myMonth= Object.values({month})[0]
+    //  const selectedMonth = monthCurrent
+    //  filteredData= mydata.filter((item)=> item.month === monthCurrent )
+
      useEffect(()=>{
 
 
       const filteredData = mydata.filter((item) => item.month === selectedMonth);
         setCalData(filteredData);
         toSetPast()
-
      },[selectedMonth,mydata])
 
      const toSetPast = (calValue)=>{
@@ -74,35 +82,41 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
     
 
      const handleSubmit=(data)=>{
+      // alert("ok")
+      // setShow(!show)
+      setShow(true)
 
-      const {id,title,img,description,month,day}=data
-      dipatch(popUp({id,title,img,description,month,day}))
-      setShowPopup(!showPopup)
+
+      const {id,title,img,description,month,day,isSaved}=data
+      dipatch(popUp({id,title,img,description,month,day,isSaved}))
      }
  
-     
-      
-
       var previousAndListData = {
         prevData:past,myData:mydata 
       }
 
        return (
         <>
-      <ListingContext.Provider value={previousAndListData}>
-        {console.log("current month in listing",selectedMonth)}
+      <ListingContext.Provider value={previousAndListData} className="listingMainClass">
+        <div className="listingMainClass">
+        {console.log("filteredData current month in listing",filteredData)}
        <div className="myListingcontainer">      
         {
         
           calData.map((item)=>{
 
             if(item.title)
-            {
+             {
               return(
 
                 <Link onClick={handleSubmit.bind(this,item)} >
+                  {console.log("isSavedin listing",item.isSaved)}
                 <Card key ={item.id} className="myCard">
-                <Card.Img  variant="left" className="cardimg" src={item.img} />    
+                  
+                  <div className="mainCardImage">
+                  <Card.Img  variant="left" className="cardimg" src={item.img} />                        
+                  </div>
+                
                  <Card.Body className="cardBody">
                    <Card.Title className="cardTitle">{item.title}</Card.Title>
                   <Card.Text className="cardText ">
@@ -130,14 +144,13 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
         
         {
 
-        showPopup && <PopDis/>
+        show && <PopDis show={show} setShow ={setShow}/>
 
         }
 
-        {/* {show} */}
 
         
-
+        </div>
         </ListingContext.Provider>
         </>
       

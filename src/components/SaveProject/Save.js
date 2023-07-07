@@ -7,14 +7,13 @@ import { popUp } from '../Features/List';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import PopDis from '../PopUpDisplay/PopDis';
-import Form from 'react-bootstrap/Form';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 
 const Save = () => {
 
   const [position, setPosition] = useState('middle-center');
-  const [showPopup, setShowPopup] = useState(false); 
+  const [show, setShow] = useState(false); 
 
     const dipatch = useDispatch()
 
@@ -30,7 +29,7 @@ const Save = () => {
       // const {img,title}=data
       const {id,title,img,description,month,day}=data
       dipatch(popUp({id,title,img,description,month,day}))
-      setShowPopup(!showPopup)
+      setShow(!show)
     
 
     }
@@ -42,7 +41,7 @@ const Save = () => {
 
         {
             savedData > 0 ? (
-                <Row>
+                <Row className="saveRow">
                   {savedProject.map((data, index) => (
                     <Col key={index} className="saveCol">
                       <Card style={{ width: '18rem' }} className="saveCard" onClick={handleClick.bind(this,data)}>
@@ -58,31 +57,7 @@ const Save = () => {
                 </Row>
               ) : (
                 <>
-                {/* <div className="mb-3">
-                <label htmlFor="selectToastPlacement">Toast position</label>
-                <Form.Select
-                  id="selectToastPlacement"
-                  className="mt-2"
-                  onChange={(e) => setPosition(e.currentTarget.value)}
-                >
-                  {[
-                    'top-start',
-                    'top-center',
-                    'top-end',
-                    'middle-start',
-                    'middle-center',
-                    'middle-end',
-                    'bottom-start',
-                    'bottom-center',
-                    'bottom-end',
-                  ].map((p) => (
-                    <option key={p} value={p}>
-                      {p}
-                    </option>
-                  ))}
-                </Form.Select>
-              </div> */}
-        
+              
               <div
                 aria-live="polite"
                 aria-atomic="true"
@@ -112,11 +87,9 @@ const Save = () => {
               )
         }
 
-          {
-
-          showPopup && <PopDis/>
-
-          }
+        {
+        show && <PopDis show={show} setShow ={setShow}/>
+        }
         
    </div>
   )

@@ -31,7 +31,6 @@ const Login = () => {
 
   return (
     <>
-
     {
       !user.email && (
         <div className="LoginBorder">
@@ -70,9 +69,7 @@ const Login = () => {
             <b>If not registered please Signup!</b>
             <Link to='/SignUp'>
             <Button type="submit" className="LoginButton" variant="warning">SignUp</Button>
-            </Link>
-
-           
+            </Link>           
             {/* <Button type="submit" className="LoginButton" variant="warning">Login</Button> */}
           </Form>
           </div>

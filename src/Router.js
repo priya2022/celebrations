@@ -10,6 +10,7 @@ import Home from './components/Home/Home'
 import Save from './components/SaveProject/Save'
 import Login from './components/Authentication/Login/Login'
 import Signup from './components/Authentication/Login/Signup'
+import ImageMasonry from './components/Masonry/ImageMasonry'
 
 
 // const Listing = lazy(() => import('./components/Listing/Listing'));
@@ -43,6 +44,8 @@ const Router  = () => {
         <Route path='popUp/:id' element={<Popup/>} />      
         <Route path='/' element={<PastCeleb/>}/>
         <Route path='/challenges' element = {<Challenge/>} />
+        <Route path='/Image' element = {<ImageMasonry/>} />
+
         <Route path='/MyProjects' element={ <Save/> } />
 
     </Routes>
