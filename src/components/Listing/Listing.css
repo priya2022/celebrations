@@ -4,14 +4,18 @@
     float:left;
     min-height: 100vh;
 }
+.listingMainClass .myListingcontainer{
+    width:58%;
+    background-color: #F6F6F6;
+    min-height: 100vh;
+
+}
 .myListingcontainer{
     
     width:58%;
     float:left;
     background-color: #F6F6F6;
     min-height: 100vh;
-    /* position:sticky; */
-    /* background-attachment: fixed; */
     position: -webkit-fixed;
 }
 
@@ -45,7 +49,6 @@
     padding:18px;
     color:black !important;
     height: 280px;
-    /* border:2px solid red; */
     
 }
 
@@ -54,7 +57,6 @@
     height:86%;
     margin-top:19px;
     padding-left:15px;
-    /* border:2px solid pink; */
 }
 .mainCardImage .cardimg{
     width:100%;

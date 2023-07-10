@@ -8,8 +8,6 @@ import { Provider } from 'react-redux';
 import saveReducer from './components/Features/Save';
 import userReducer from './components/Features/User'
 import ListingReducer from './components/Features/List'
-import OffCanvas from './OffCanvasTesting/OffCanvas';
-import Parent from './OffCanvasTesting/Parent';
 
 const store = configureStore({
     reducer:{
@@ -24,8 +22,6 @@ root.render(
 
     <Provider store={store}>
         <Router />
-        {/* <Parent /> */}
-         {/* <OffCanvas/> */}
     </Provider>
    
 

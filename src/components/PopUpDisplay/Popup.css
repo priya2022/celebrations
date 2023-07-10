@@ -1,25 +1,6 @@
-.PopUpcontainer{
-    /* height:95vh !important; */
-    height:95vh !important;
-    border-top-left-radius:50px;
-    border-top-right-radius:50px;
-    display:flex;
-    transition: height 3s;
-}
-.PopUpcontainer.clicked{
-    height:95vh;
-}
-.PopUpcontainer::-webkit-scrollbar {
-    display: none;
-}
-.PopUpcontainer {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
-  }
-
 .popUpHeader{
     height:3%;
-    width:96%;
+    width:94%;
     margin:auto;
     margin-top:2%;
     color:black;
@@ -31,18 +12,14 @@
     justify-content:center;
     align-items:center;
     width:100%;
-    /* background-color:blue; */    
     text-align: justify;
-   
 }
 .main{
     display:flex;
-    /* background-color:pink; */ 
 }
 
 .PopupImg,.PopUpContent{
    height:90vh;
-   
 }
 
 .PopupImg{
@@ -130,7 +107,6 @@ font-family: Source Serif Pro;
     gap:30px;
     
     
-    /* padding:0px 30px; */
 }
 .inspirations{
     color: #000;
@@ -139,7 +115,6 @@ font-family: Source Serif Pro;
 font-weight: 600;
 }
 .setDiv{
-    /* width:200px; */
     height:180px;
     border:2px solid grey;
     border-radius: 10px;
@@ -149,4 +124,7 @@ font-weight: 600;
 }
 .highlightYellow{
     background-color:#ffc107; 
+}
+.popUpHeader closeButton{
+    color:purple !important;
 }

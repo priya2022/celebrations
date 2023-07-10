@@ -4,7 +4,6 @@
     margin-top:52px;    
     float:right;
     width:40%;
-    /* margin-right:14%; */
   }
 
   .myCalendarcontainer {
@@ -100,4 +99,17 @@ font-weight: 600;
 
 .calendar-day.highlight {
   background-color: yellow;
+}
+
+.theme {
+  background-color: purple;
+  border-radius:100%;
+  width: 40px;
+  height: 40px;
+  font-size:20px;
+  margin-left:14px;
+  margin-top:0px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }

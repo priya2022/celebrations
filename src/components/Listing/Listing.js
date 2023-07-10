@@ -23,10 +23,8 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
     const [show, setShow] = useState(false); 
     const [past,setPast]=useState([])
 
-   
-
-    // const popUpData = useSelector(state=> state.listing.value)
-    // const {id,title,img,description,day,month} = popUpData
+    // Displaying Canvas
+    // const handleClose = () => setShow(false);
 
     const dipatch = useDispatch()
 
@@ -46,10 +44,7 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
      const selectedMonth = myMonth||myCurrentMonth
      filteredData= mydata.filter((item)=> item.month === selectedMonth )
 
-    //  const myCurrentMonth= Object.values({CurrentMonth})[0]
-    //  const myMonth= Object.values({month})[0]
-    //  const selectedMonth = monthCurrent
-    //  filteredData= mydata.filter((item)=> item.month === monthCurrent )
+    
 
      useEffect(()=>{
 
@@ -82,11 +77,7 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
     
 
      const handleSubmit=(data)=>{
-      // alert("ok")
-      // setShow(!show)
       setShow(true)
-
-
       const {id,title,img,description,month,day,isSaved}=data
       dipatch(popUp({id,title,img,description,month,day,isSaved}))
      }
@@ -109,7 +100,7 @@ const Listing = ({month,CurrentMonth,monthDataReceiver}) => {
              {
               return(
 
-                <Link onClick={handleSubmit.bind(this,item)} >
+                <Link onClick={handleSubmit.bind(this,item)}  >
                   {console.log("isSavedin listing",item.isSaved)}
                 <Card key ={item.id} className="myCard">
                   

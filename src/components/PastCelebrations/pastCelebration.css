@@ -36,6 +36,8 @@
 .celebrityBox:nth-child(1) .imgBox img{
         width:100%;
         height:100%;
+        width:100%;
+        height:100%;
         border-radius:100%;
         filter:contrast(130%);
         /* object-fit:contain; */

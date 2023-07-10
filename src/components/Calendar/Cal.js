@@ -28,15 +28,7 @@ const currentMonth = uniqueMonth[0]
 var days =(items.map(item=> {return item.day}))
 var mydays = days.filter(Boolean)
 
-// useEffect(()=>{
-//   const myDayinCal = monthDays.map(day=>day)
-//   console.log("myDayinCal",myDayinCal)
-//   const dayValue = days.every(value=> myDayinCal.includes(value))
-//   console.log("dayValue",dayValue )
-//   const containsValue = days.every(value=>myDayinCal.includes(value))
-//   setHighlightDays(containsValue)
-//   console.log("containsValue",containsValue)
-// },[monthDays,days])
+
 
 useEffect(() => { 
   const MyCurrentMonth =  currentMonth 
@@ -95,8 +87,9 @@ const handleClickChange=(value)=>{
     
     <>
     {console.log("current month in calendar",uniqueMonth)}
-    {console.log("days",mydays)}
-{/* {console.log("mydaytssdin hignkdreturh",containsValue)} */}
+    {console.log("Mydaysin Calendar",mydays)}
+    {console.log("daysin Calendar",days)}
+
 <div className="myCalCont">
 <div  className="table"> 
 
@@ -123,42 +116,24 @@ const handleClickChange=(value)=>{
     </ul>
 
     <div className="calendar">
-        {/* {monthDays.map((day, index) => (
-                // const containsValues = valuesToCheck.every(value => days.includes(value));
-
-          // <div
-          //   key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${highlighDays ? 'theme' : ''}`}>
-          //   {day}
-          // </div>
-
-          
-          // <div
-          // key={index} className={ highlighDays ? 'theme' : ''}>
-          // {day}
-          // </div>
-
-          
-          <div
-          key={index} className={`calendar-day ${day === '' ? 'empty-day' : ''} ${mydays.includes(day) ? 'theme' : ''}`}>
-          {day}
-        </div>
-
-          
-        ))} */}
+      
 
 {monthDays.map((day, index) => {
     let className = 'calendar-day';
 
     if (day === '') {
       className += ' empty-day';
-    } else if (mydays.includes(day)) {
+    } else if (days.includes(day.toString())) {
       className += ' theme';
     }
 
     return (
-      <div key={index} className={className}>
+      <div className={className}>
+          <div key={index} >
         {day}
       </div>
+      </div>
+      
     );
   })}
       </div> 

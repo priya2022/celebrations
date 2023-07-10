@@ -1,64 +1,62 @@
-import React, { useEffect, useState } from 'react'
-// import store from './path/to/your/store';
-import {useSelector} from 'react-redux'
-import { createSelector} from '@reduxjs/toolkit'
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
 import { saveProject,removeProject } from '../Features/Save';
 import './Popup.css'
 
 
-    const selectProjectInfo = (state)=> state.save.projects.map(project=>({
-      id:project.id,
-      isSavedinMyProject:project.isSaved
-    }))
+const selectProjectInfo = (state)=> state.save.projects.map(project=>({
+  id:project.id,
+  isSavedinMyProject:project.isSaved
+}))
 
 
-const PopDis = ({show,setShow}) => {
+function PopDis({show,setShow}) {
+
+  const offCanvasStyles ={
+    height:'95vh',
+    borderTopLeftRadius:"50px",
+    borderTopRightRadius:"50px",
+    // display:"flex",
+  }
+
 
   const projectInfo = useSelector (selectProjectInfo )
-
   const dispatch = useDispatch()
-
-    const data = useSelector(state=> state.listing.value)
-    const {id,title,img,description,day,month,isSaved} = data
-
+  const data = useSelector(state=> state.listing.value)
+  const {id,title,img,description,day,month,isSaved} = data
   const isSavedProject = projectInfo.find(project=> project.id === id)?.isSavedinMyProject
   const buttonVariant = isSavedProject ? 'highlightYellow' : ' '
   const buttonText = isSavedProject ? 'Saved' : 'Save';
 
-  
-  
-  
-    
-    // const projectInfo = useSelector(selectProjectInfo)
-    
 
-    // const toBeSaved = useSelector(state=> state.save.toBeSaved)
 
-    const handleClose = () => {
-        setShow(false)
-      }
+ 
+  const handleSave = (data) => {
+    if(isSavedProject){
+      dispatch(removeProject(data.id))
+    }
+    else{
+      dispatch(saveProject({...data,isSaved:true}));
+    }
+  };
 
-      const handleSave = (data) => {
-        if(isSavedProject){
-          dispatch(removeProject(data.id))
-        }
-        else{
-          dispatch(saveProject({...data,isSaved:true}));
-        }
-      };
 
+  const handleClose = () => setShow(false);
 
   return (
-    <div>
- <Offcanvas show={show} onHide={handleClose} placement="bottom" className={`${show ? 'clicked':' '} PopUpcontainer`}  >
+    <>
+    <div >
+    <Offcanvas show={show} onHide={handleClose}placement="bottom" style={offCanvasStyles}>
+
         <Offcanvas.Header closeButton className="popUpHeader">
-          <Offcanvas.Title ></Offcanvas.Title>
+          <Offcanvas.Title>{title} </Offcanvas.Title>
         </Offcanvas.Header>
         
-        <Offcanvas.Body className="popUpContent">
+      
+      <Offcanvas.Body className="popUpContent" >
           <div className="main">    
 
             <div className="PopupImg">
@@ -107,9 +105,9 @@ const PopDis = ({show,setShow}) => {
       </Offcanvas>
 
 
-    </div>
-  )
+        </div>
+    </>
+  );
 }
 
-export default PopDis
-
+export default PopDis;

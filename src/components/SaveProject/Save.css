@@ -1,32 +1,25 @@
 .saveRow{
     margin-left:15%;
-    /* border:2px solid red; */
     width:85%;
-    
-
 }
 .savCol{
-/* border: 2px solid red !important; */
-display:flex;
-margin:20px;
+    display:flex;
+    margin:20px;
 
 }
 .saveCard{
-    /* border: 2px solid rgb(27, 226, 210) !important; */
     width:370px;
     height:500px;
     position:relative;
     margin:2%;
 }
 .saveBody{
-    /* border: 2px solid violet; */
     width:90%;
     height: 90%;
     margin-left:auto;
     margin-right: auto;
 }
 .saveImg{
-    /* border: 2px solid green !important; */
     width:100%;
     height:80%;
     margin-left: auto;
@@ -35,5 +28,4 @@ margin:20px;
 }
 .saveTitle{
     text-align:center;
-    /* border: 2px solid yellow !important; */
 }
