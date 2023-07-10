@@ -19,7 +19,6 @@ function PopDis({show,setShow}) {
     height:'95vh',
     borderTopLeftRadius:"50px",
     borderTopRightRadius:"50px",
-    // display:"flex",
   }
 
 
