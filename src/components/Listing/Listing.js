@@ -6,6 +6,52 @@ import Calendar from '../Calendar/Calendar';
 import { Link } from 'react-router-dom';
 export const ListingContext = createContext();
 
+const slots=[
+  {
+   "id":"1",
+   "slot":"1",
+    "students":[
+      {isBooked:false}
+    ],
+    "timings":"10am-11am"
+  },
+  {
+   "id":"2",
+   "slot":"2",
+    "students":[
+      {isBooked:false}
+
+    ],
+    "timings":"10am-11am"
+  },
+  {
+   "id":"3",
+   "slot":"3",
+    "students":[
+      {isBooked:false}
+    ],
+    "timings":"10am-11am"
+  },
+  {
+   "id":"4",
+   "slot":"4",
+    "students":[
+      {isBooked:false}
+    ],
+    "timings":"10am-11am"
+  },
+  {
+   "id":"5",
+   "slot":"5",
+    "students":[
+      {isBooked:false}
+    ],
+    "timings":"10am-11am"
+  }
+
+
+]
+
 
 const Listing = ({month,mynewMonth,monthDataReceiver}) => {
   
