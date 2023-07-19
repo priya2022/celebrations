@@ -24,6 +24,10 @@ const handleSubmit=(data)=>{
 // const dataToMap = myPast ? myPast : prevData;
   return (
     <>
+      <div className="wrapperPast">
+
+     
+
 
       <h2 className="pheading">See Past Celebration</h2>
       {
@@ -64,6 +68,7 @@ show && <PopDis show={show} setShow ={setShow}/>
 
 }
 
+</div>
     </>
    
   )

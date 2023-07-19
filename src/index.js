@@ -8,12 +8,16 @@ import { Provider } from 'react-redux';
 import saveReducer from './components/Features/Save';
 import userReducer from './components/Features/User'
 import ListingReducer from './components/Features/List'
+import challengeReducer from './components/Features/challenges'
+import FeatureReducer from './components/Features/PublicSlice'
 
 const store = configureStore({
     reducer:{
         listing:ListingReducer,
         save:saveReducer,
-        user:userReducer
+        user:userReducer,
+        challenge:challengeReducer,
+        feature:FeatureReducer
     }
 })
 

@@ -19,20 +19,30 @@ function PopDis({show,setShow}) {
     height:'95vh',
     borderTopLeftRadius:"50px",
     borderTopRightRadius:"50px",
+    border:"2px solid purple",
+
   }
 
+  const popUpContent={
+    display:"flex",
+    flexDirection:"column",   
+    justifyContent:"center",
+    alignItems:"center",
+    width:"100%",
+    height: "80vh",
+    border:"2px solid red",
+    textAlign: "justify",
+  }
 
   const projectInfo = useSelector (selectProjectInfo )
   const dispatch = useDispatch()
   const data = useSelector(state=> state.listing.value)
   const {id,title,img,description,day,month,isSaved} = data
+  
   const isSavedProject = projectInfo.find(project=> project.id === id)?.isSavedinMyProject
   const buttonVariant = isSavedProject ? 'highlightYellow' : ' '
   const buttonText = isSavedProject ? 'Saved' : 'Save';
 
-
-
- 
   const handleSave = (data) => {
     if(isSavedProject){
       dispatch(removeProject(data.id))
@@ -48,7 +58,7 @@ function PopDis({show,setShow}) {
   return (
     <>
     <div >
-    <Offcanvas show={show} onHide={handleClose}placement="bottom" style={offCanvasStyles}>
+    <Offcanvas show={show} onHide={handleClose} placement="bottom" style={offCanvasStyles}>
 
         <Offcanvas.Header closeButton className="popUpHeader">
           <Offcanvas.Title>{title} </Offcanvas.Title>
@@ -62,7 +72,7 @@ function PopDis({show,setShow}) {
                 <img src={img} alt="" className="pImg" />
             </div>
 
-            <div className="PopUpContent">
+            <div className="PopUpContent2">
 
               <div className="popUpButton">
                 <Button className='myButton'>Celebration</Button>
@@ -76,6 +86,9 @@ function PopDis({show,setShow}) {
                  <h4 className="popUpMainTitle">{title}</h4><span className="month">{month} {day}, 2023</span>
                   <p className="dataDescription">{description}</p>
               </div>
+
+              <div className="wpast">
+
                   <h2 className="inspirations">Inspirations</h2>
                 <div className="DetailedImage">
                 
@@ -88,7 +101,7 @@ function PopDis({show,setShow}) {
                   <div className="setDiv">
                   <img src="" alt="" className="popUPIMage" />
                   </div>
-                  <div className="setDiv">
+                  {/* <div className="setDiv">
                   <img src="" alt=""  className="pUimage"/>
                   </div>
                   <div className="setDiv">
@@ -96,8 +109,11 @@ function PopDis({show,setShow}) {
                   </div>
                   <div className="setDiv">
                   <img src="" alt=""  className="popUPIMage"/>
-                  </div> 
+                  </div>  */}
                 </div>
+
+                </div>
+
             </div>
             </div>
         </Offcanvas.Body>

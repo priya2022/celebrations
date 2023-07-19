@@ -31,7 +31,7 @@ const Home = () => {
         <span className="myh">
         <i class="bi bi-hand-thumbs-up myColor"></i>
         </span>
-        <span  className="myh title">Challenges</span>
+        <span  className="myh title">Inspirations</span>
         </Link>         
          </div>
 
@@ -39,7 +39,7 @@ const Home = () => {
           <Link to="Image" className="myLink">
           <span className="myh">
           <i class="bi bi-lightbulb myColor"></i></span>
-          <span  className="myh title">Feature Work</span>
+          <span  className="myh title">Feature Works</span>
           </Link>
          
           </div>
@@ -48,9 +48,9 @@ const Home = () => {
         <div> 
         <Link to="MyProjects" className="myLink">
         <span className="myh">
-        <i class="bi bi-hand-thumbs-up myColor"></i>
+        <i class="bi bi-download"></i>
         </span>
-        <span  className="myh title">My Project </span>
+        <span  className="myh title">Saved Project </span>
         </Link>         
          </div>
 

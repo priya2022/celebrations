@@ -3,79 +3,22 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Masonry from '@mui/lab/Masonry';
 import { styled } from '@mui/material/styles';
+import Button from 'react-bootstrap/Button';
+import './challenge.css'
+
+//bootstrap
+
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+
+//reduxjs/toolkit
+import { useDispatch, useSelector } from 'react-redux'
+import {saveChallenges} from '../Features/challenges'
+import { FeaturedProject } from '../Features/PublicSlice';
 
 
+//selecting particular values from the challenges
 
-  const itemData = [
-    {
-      img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-      title: 'Fern',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f',
-      title: 'Snacks',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-      title: 'Mushrooms',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383',
-      title: 'Tower',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-      title: 'Sea star',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-      title: 'Honey',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-      title: 'Basketball',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-      title: 'Breakfast',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1627328715728-7bcc1b5db87d',
-      title: 'Tree',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-      title: 'Burger',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-      title: 'Camera',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-      title: 'Coffee',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1627000086207-76eabf23aa2e',
-      title: 'Camping Car',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-      title: 'Hats',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-      title: 'Tomato basil',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1627328561499-a3584d4ee4f7',
-      title: 'Mountain',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-      title: 'Bike',
-    },
-  ];
 
   const Label = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -88,28 +31,133 @@ import { styled } from '@mui/material/styles';
   }));
   
 
+  
+    const selectChallenges = (state) => state.feature.features.map(submittedProject=>
+      ({
+
+        id: submittedProject.id,
+        uniqueUserId:submittedProject.userId,
+        isSubmit: submittedProject.isSubmitted
+
+      })
+      )
+
+
 export default function Challenge() {
+
+  let buttonVariant=''
+
+  let buttonText=''
+
+  const challenge = useSelector(state=>state.challenge.challenges)
+  
+
+  const selectSubmittedInfo = useSelector(selectChallenges)
+
+
+  const dispatch = useDispatch()
+
+  const imageStyle ={
+    height:"100vh",
+    width:'80vw',
+    border:"2px solid red"
+  }
+
+  const images={
+    height:"20%",
+     width:"20%",
+     border:"2px solid blue",
+  }
+
+  const addingChallenges={
+    width:"80vw",
+    border:'2px solid red',
+    height:'100vh',
+    float:'right',
+  }
+
+  
+
+  const handleInputChange =(e)=>{
+
+    const files = e.target.files;
+   const newImageSrcArray = Array.from(files).map((file)=>{
+    const src =URL.createObjectURL(file);
+    return{
+      img:src,
+      title:file.name,
+    }
+   })
+    
+    dispatch(saveChallenges(newImageSrcArray))
+  }
+
+  const handlePublicSubmit =(data)=>{
+    console.log("mydata in Challenges ",data)
+    const {id,img,title,isSubmitted} = data
+    dispatch(FeaturedProject({...data,isSubmitted:true}))
+
+    const isSubmittedProject = selectSubmittedInfo.find(project => project.id === id)?.isSubmit
+   buttonVariant = isSubmittedProject ? 'hightlightChallenges' : ' ';
+   buttonText = isSubmittedProject ? 'submitted' :'submit'
+
+  }
+
+
   return (
-    <Box sx={{ width: "84vw", minHeight: 829 ,float:"right"}}>
-    <Masonry columns={3} spacing={2}>
-      {itemData.map((item, index) => (
-        <div key={index}>
-          <Label>{index + 1}</Label>
-          <img
-            src={`${item.img}?w=162&auto=format`}
-            srcSet={`${item.img}?w=162&auto=format&dpr=2 2x`}
+
+
+    <>
+    {console.log("buttonVariant",buttonVariant)}
+    {console.log("buttonVariant",buttonText)}
+
+
+    <Form.Group controlId="formFileMultiple" className="input">
+        <Form.Label>Multiple files input example</Form.Label>
+        <Form.Control type="file" multiple onChange={handleInputChange} />
+      </Form.Group>
+
+
+    <Box sx={{ width: "84vw", minHeight: "100vh" ,float:"right"}}>
+    
+    <div >
+      <Masonry columns={3} spacing={2}>
+        {challenge.flatMap((item, index) => (
+          <div key={index} >
+          <div className="MasonryContainer">
+            {/* <Label>{index + 1}</Label> */}
+            <img
+            src={item.img}
             alt={item.title}
-            loading="lazy"
-            style={{
-              borderBottomLeftRadius: 4,
-              borderBottomRightRadius: 4,
-              display: 'block',
-              width: '100%',
-            }}
-          />
-        </div>
-      ))}
-    </Masonry>
+              // src={`${item.img}?w=162&auto=format`}
+              // srcSet={`${item.img}?w=162&auto=format&dpr=2 2x`}
+              // alt={item.title}
+              loading="lazy"
+              style={{
+                borderBottomLeftRadius: 4,
+                borderBottomRightRadius: 4,
+                display: 'block',
+                width: '100%',
+              }}
+            />
+          </div>
+            {/* align Text */}
+            <div className="textBottom">
+              <Button className={`submittedToPublic ${buttonVariant}`} variant="outline-warning" onClick={handlePublicSubmit.bind(this,item)}>{buttonText}</Button>
+            </div>
+
+            </div>
+
+        ))}
+      </Masonry>
+      </div>
+
   </Box>
+
+ 
+
+
+  </>
+
   );
 }

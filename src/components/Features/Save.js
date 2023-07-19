@@ -1,4 +1,3 @@
-
 import {createSlice} from '@reduxjs/toolkit'
 
 export const saveSlice= createSlice({
@@ -19,7 +18,6 @@ export const saveSlice= createSlice({
             state.projects[existingIndex] = action.payload;
           }
        
-        
         },
        
         removeProject:(state,action)=>{

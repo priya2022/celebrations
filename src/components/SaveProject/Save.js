@@ -62,7 +62,7 @@ const Save = () => {
                 aria-live="polite"
                 aria-atomic="true"
                 className="bg-light position-relative"
-                style={{ minHeight: '80vh',width:"80%", float:'right', color:'purple' }}
+                style={{ minHeight: '100vh',width:"85%", float:'right', color:'purple' }}
               >
                 <ToastContainer
                   className="p-3"

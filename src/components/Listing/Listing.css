@@ -1,21 +1,23 @@
 .listingMainClass{
     margin-left:15%;
+    display: flex;
     width:85%;
     float:left;
     min-height: 100vh;
+    position:absolute;
 }
 .listingMainClass .myListingcontainer{
     width:58%;
-    background-color: #F6F6F6;
     min-height: 100vh;
-
+    background-color: #F6F6F6;
+    position: relative;
+    flex: 1;
 }
 .myListingcontainer{
-    
     width:58%;
     float:left;
     background-color: #F6F6F6;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     position: -webkit-fixed;
 }
 
